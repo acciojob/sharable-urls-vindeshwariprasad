@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let data = document.getElementById("okay");
-  data.addEventListener("submit", (e) => {
+  let data = document.getElementById("button");
+  data.addEventListener("click", (e) => {
     e.preventDefault();
     let names = document.getElementById("name").value;
     let years = document.getElementById("year").value;
