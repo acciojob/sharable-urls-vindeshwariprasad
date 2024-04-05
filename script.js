@@ -1,19 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let data = document.getElementById("button");
-  data.addEventListener("click", (e) => {
-    e.preventDefault();
-    let names = document.getElementById("name").value;
-    let years = document.getElementById("year").value;
-    let a = "";
-    if (names) {
-      a += "?name=" + names;
-    } if (years && !names) {
-      a += "?year=" + years;
-    } if (names && years) {
-      a += "&year=" + years;
+  const form = document.getElementById("form");
+  const urlElement = document.getElementById("url");
+
+  document.getElementById("button").addEventListener("click", () => {
+    const name = form.name.value;
+    const year = form.year.value;
+
+    let queryString = "";
+    if (name && year) {
+      queryString = `?name=${encodeURIComponent(name)}&year=${encodeURIComponent(year)}`;
+    } else if (name) {
+      queryString = `?name=${encodeURIComponent(name)}`;
+    } else if (year) {
+      queryString = `?year=${encodeURIComponent(year)}`;
     }
-    let h = document.getElementById("url");
-    h.innerHTML += a;
+
+    urlElement.textContent = "https://localhost:8080/" + queryString;
   });
 });
-
